@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#When u run migrate. Django will go trough installed apps. For each one it will go in apps directory check
+#what tables are needed to work with this app. Each app has tables that it requires.
+# poll.apps.PollsConfig
+# will go to polls app, apps.py and check pollsConfig
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'django.contrib.admin',
