@@ -1,30 +1,16 @@
+{%  extends 'music/base.html' %}
+{% block title %} Album {% endblock %}
+{% block body %}
 <img src ="{{album.album_logo}}">
 
 <h1> {{album.album_title}} </h1>
 <h2>{{album.artist}}</h2>
 
-{% if error_message %}
-    <p>{{ error_message }}</p>
-{% endif %}
-
-  <!-- Creating a post method to /favorite/ URL -->
-<form action="{% url 'music:favorite' album.id %}" method="post">
-  <!-- this will make it more secure -->
-  {% csrf_token %}
-
-  <!-- loop that will put each trough album and spit each song in input/label tag -->
-  {% for song in album.song_set.all %}
-    <input type="radio" id="song{{ forloop.counter }}" name="song" value ={{song.id}}>
-    <label for="song{{ forloop.counter}}">
-
-
+{% for song in album.song_set.all %}
       {{song.song_title}}
-      <!-- loop that will check if song is favorite. Will put star. -->
       {% if song.is_favorite%}
         <img src="http://i.imgur.com/b9b13Rd.png"/>
       {% endif  %}
-
-    </label><br>
+        <br>
   {% endfor %}
-  <input type="submit" value="Favorites">
-</form>
+{% endblock %}
