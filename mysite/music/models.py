@@ -1,15 +1,21 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from django.core.urlresolvers import reverse
 # Create your models here.
 
 class Album(models.Model):
+    # read about OOP and MVC
     artist = models.CharField(max_length=250)
     album_title = models.CharField(max_length=500)
     genre = models.CharField(max_length=100)
-    album_logo = models.CharField(max_length=1000)
+    album_logo = models.FileField()
+
+    def get_absolute_url(self):
+        return reverse('music:detail', args=[self.pk])
+
     def __str__(self):
+        # read about string concatenation
         return self.album_title + ' - ' + self.artist
 
 class Song(models.Model):
