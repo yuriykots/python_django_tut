@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # will go to polls app, apps.py and check pollsConfig
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    'music.apps.MusicConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,3 +128,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#actual directory on your computer. For server. 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#what browsers user to accesing files trough http. For Browser
+MEDIA_URL = '/media/'
