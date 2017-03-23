@@ -7,7 +7,15 @@ from django.views import generic
 from django.views.generic import View
 from .models import Album
 from .forms import UserForm
+from django.http import HttpResponse
 
+
+
+def testDetail(request, pk):
+    return HttpResponse("<h1> Test View:  " +str(pk) + "</h1>")
+
+def test(request):
+    return render(request, 'music/test.html')
 
 class IndexView(generic.ListView):
     template_name = 'music/index.html'
